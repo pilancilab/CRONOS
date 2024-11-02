@@ -26,3 +26,6 @@ We introduce the **CRONOS** algorithm for convex optimization of two-layer neura
 - add setup.py? or should we make it a separate package to clearly distinguish user customizations via Hydra and OmegaConf?
 - add plots into repo, update in readme
 - link to paper
+- add in instructions for vision and GPT2, especially GPT2 (3 step run process)
+- add a requirements.txt? RTX4090 minimum, JAX, NVIDIA, CUDA, NVIDIA driver versions
+- add in sharding here, or in separate codebase? 
