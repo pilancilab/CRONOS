@@ -1,0 +1,13 @@
+*.pt
+*.txt
+*.pyc
+*.tar.gz
+*.npz
+
+__pycache__
+
+/data
+/wandb
+/.vscode
+env/
+venv/
