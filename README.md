@@ -21,6 +21,8 @@ We introduce the **CRONOS** algorithm for convex optimization of two-layer neura
 
 ---
 
+https://arxiv.org/abs/2411.01088 
+
 # TODO: 
 - add in jupyter demo
 - add setup.py? or should we make it a separate package to clearly distinguish user customizations via Hydra and OmegaConf?
