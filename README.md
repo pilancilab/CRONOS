@@ -1,15 +1,15 @@
 # CRONOS: Convex Neural Networks via Operator Splitting
 
-Welcome to the official implementation for the **CRONOS project**! 
+Welcome to the official implementation for the **CRONOS project**! Check out the [paper](https://arxiv.org/abs/2411.01088) for more details.
 
 ## Overview
 
-We introduce the **CRONOS** algorithm for convex optimization of two-layer neural networks. 
+We introduce the **CRONOS** algorithm for convex optimization of two-layer neural networks. This repo contains the official JAX implementation of the CRONOS paper, and allows installation has a handy pip package for all your binary classification needs.
 
 ## CRONOS and CRONOS-AM
 
-- **CRONOS**: Our primary algorithm, leveraging convex optimization to train two-layer neural networks efficiently at scale. Experiments include fullsize ImageNet, downsampled ImageNet, IMDb, Food, FMNIST, CIFAR-10, MNIST, and synthetic datasets.
-- **CRONOS-AM**: Building on CRONOS, we develop CRONOS-AM which combines CRONOS with alternating minimization. This extension allows training of multi-layer networks with arbitrary architectures.
+- **CRONOS**: Uses convex optimization to train two-layer neural networks efficiently at scale. Experiments include fullsize ImageNet, downsampled ImageNet, IMDb, Food, FMNIST, CIFAR-10, MNIST, and synthetic datasets.
+- **CRONOS-AM**: CRONOS with Alternating Minimization. This extension allows training of multi-layer networks with arbitrary architectures (MLP, CNN, GPT, etc.).
 
 ## Key Features
 
@@ -28,8 +28,16 @@ pip install CRONOS -- user sets dataset, exp, model, optimzier
 ```
 ---
 
-https://arxiv.org/abs/2411.01088 
+## Citation
 
+```bash
+@inproceedings{feng2024,
+    title={{CRONOS: Convex Neural Networks via Operator Splitting}},
+    author={Miria Feng, Zachary Frangella and Mert Pilanci},
+    booktitle={Advances in Neural Information Processing Systems},
+    year={2024}
+}```
+---
 
 # TODO: 
 - add in jupyter demo
