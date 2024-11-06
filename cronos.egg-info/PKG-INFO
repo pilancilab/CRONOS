@@ -1,3 +1,20 @@
+Metadata-Version: 2.1
+Name: cronos
+Version: 0.1.0
+Summary: CRONOS: Convex Neural Networks via Operator Splitting
+Home-page: https://github.com/pilancilab/CRONOS
+Author: miria kaname feng
+Author-email: miria0@me.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: JAX :: GPU version todo
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # CRONOS: Convex Neural Networks via Operator Splitting
 
 Welcome to the official implementation for the **CRONOS project**! Check out the [paper](https://arxiv.org/abs/2411.01088) for more details.
@@ -44,9 +61,10 @@ pip install CRONOS -- user sets dataset, exp, model, optimizer
 - add in jupyter demo
 - hydra + omegaconf (user sets dataset, add new dataset, template loader)
 - add in instructions for vision and GPT2, especially GPT2 (3 step run process)
-- RTX4090 minimum, JAX, NVIDIA, CUDA, NVIDIA driver versions
+- add a requirements.txt? RTX4090 minimum, JAX, NVIDIA, CUDA, NVIDIA driver versions
 - add in sharding here, or in separate codebase? 
 - consolidate 3 step run process for gpt, consolidate 2 runners
 - populate tests for all modules
 - populate requirements.txt
-- push to PyPI
+
+
