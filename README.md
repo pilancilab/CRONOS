@@ -21,7 +21,15 @@ We introduce the **CRONOS** algorithm for convex optimization of two-layer neura
 
 ---
 
+## Installation
+
+```bash
+pip install CRONOS -- user sets dataset, exp, model, optimzier
+```
+---
+
 https://arxiv.org/abs/2411.01088 
+
 
 # TODO: 
 - add in jupyter demo
