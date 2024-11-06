@@ -36,7 +36,8 @@ pip install CRONOS -- user sets dataset, exp, model, optimizer
     author={Miria Feng, Zachary Frangella and Mert Pilanci},
     booktitle={Advances in Neural Information Processing Systems},
     year={2024}
-}```
+}
+```
 ---
 
 # TODO: 
