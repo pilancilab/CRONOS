@@ -4,7 +4,7 @@ Welcome to the official implementation for the **CRONOS project**! Check out the
 
 ## Overview
 
-We introduce the **CRONOS** algorithm for convex optimization of two-layer neural networks. This repo contains the official JAX implementation of the CRONOS paper, and allows installation has a handy pip package for all your binary classification needs.
+We introduce the **CRONOS** algorithm for convex optimization of two-layer neural networks. This repo contains the official JAX implementation of the CRONOS paper, and allows installation as a handy pip package for all your binary classification needs.
 
 ## CRONOS and CRONOS-AM
 
