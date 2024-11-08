@@ -31,10 +31,10 @@ pip install CRONOS -- user sets dataset, exp, model, optimizer
 ## Citation
 
 ```bash
-@inproceedings{feng2024,
+@inproceedings{feng2024cronos,
     title={{CRONOS: Convex Neural Networks via Operator Splitting}},
     author={Miria Feng, Zachary Frangella and Mert Pilanci},
-    booktitle={Advances in Neural Information Processing Systems},
+    booktitle={Proceedings of the Neural Information Processing Systems (NeurIPS)},
     year={2024}
 }
 ```
