@@ -3,7 +3,7 @@ import jax.numpy as jnp
 import jax.random as jrn
 from jax import jit, lax
 from jax.scipy.linalg import solve_triangular
-from utils.linops_utils import tensor_to_vec, vec_to_tensor
+from utils import tensor_to_vec, vec_to_tensor
 from typing import NamedTuple
 from jax import tree_util
 

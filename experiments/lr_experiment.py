@@ -1,5 +1,5 @@
 import jax.numpy as jnp
-from training.train import train 
+from training import train 
 import numpy as np
 
 def lr_grid_exp_fun(problem_data: dict,

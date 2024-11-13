@@ -26,6 +26,8 @@ from jax import lax
 from jax import make_jaxpr 
 from jax import config
 from jax import device_put
+from config import *
+
 
 CPUS = jax.devices("cpu")
 GPUS = jax.devices("gpu")
@@ -353,7 +355,8 @@ def load_imagenet512(dataset_rel_path=join('datasets', 'imagenet_cleaned'),
                     binary_classes=True,    
                     stride=3, 
                     normalize=True): # todo: add normalize
-    project_root = dirname(abspath(''))
+    #project_root = dirname(abspath(''))
+    project_root = PACKAGE_DIR
     folder_path_train = join(project_root, dataset_rel_path, 'training')
     #print(folder_path_train)
     folder_path_val = join(project_root, dataset_rel_path, 'validation')

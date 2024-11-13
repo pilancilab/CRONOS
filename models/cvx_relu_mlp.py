@@ -1,18 +1,28 @@
 # optimized in JAX for parallelization: updated Nov 1, 2024
 
 from models.cvx_mlp import Convex_MLP
-from utils.model_utils import get_hyperplane_cuts, relu_optimal_weights_transform
 import jax.numpy as jnp
 from jax import jit, tree_util
 from jax.nn import relu
+from jax import jit, tree_util, vmap
 
 class CVX_ReLU_MLP(Convex_MLP):
     def __init__(self, X, y, P_S, beta, rho, seed, d_diags = None, e_diags = None):
         super().__init__(X, y, P_S, beta, rho, seed)
         self.d_diags = d_diags
         self.e_diags = e_diags
-    
+    # def __init__(self, X, y, n_classes, P_S, beta, rho, seed,
+    # d_diags = None, e_diags = None, Xtst = None, ytst = None):
+    #     super().__init__(X, y, P_S, beta, rho, seed)
+    #     self.n_classes = n_classes
+    #     self.d_diags = d_diags
+    #     self.e_diags = e_diags
+    #     self.Xtst = Xtst
+    #     self.ytst = ytst
+
     def init_model(self):
+        from utils.model_utils import get_hyperplane_cuts
+
         self.d_diags, self.seed = get_hyperplane_cuts(self.X, self.P_S, self.seed)
         self.e_diags = 2*self.d_diags-1
     
@@ -73,7 +83,9 @@ class CVX_ReLU_MLP(Convex_MLP):
         b = b + self.rmatvec_G(self.matvec_G(vec))
         return b
     
-    def get_ncvx_weights(self, u):
+    def get_ncvx_weights(self, u): #theres a problem here 
+        from utils.model_utils import relu_optimal_weights_transform
+
         return relu_optimal_weights_transform(u[0], u[1])
     
     def predict(self, data, W1, w2):

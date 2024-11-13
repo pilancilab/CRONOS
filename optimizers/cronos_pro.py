@@ -3,10 +3,9 @@ import optax
 from jax import jit, tree_util
 from optax.contrib import dadapt_adamw
 from optimizers.dist_shampoo.distributed_shampoo import distributed_shampoo
-from models.cvx_grelu_mlp import CVX_GReLU_MLP
-from optimizers.pcg import pcg
-from preconditioner.nystrom import Nys_Precond, rand_nys_appx
-from utils.model_utils import grelu_optimal_weights_transform
+from models import CVX_GReLU_MLP
+from optimizers import pcg
+from utils import grelu_optimal_weights_transform
 
 class CronosPro:
     def __init__(self,
@@ -36,8 +35,10 @@ class CronosPro:
        cvx_head.init_model()
        
        P_S =  self.cronos_params['P_S']
+       from preconditioner import rand_nys_appx
 
        U, S, cvx_head.seed = rand_nys_appx(cvx_head, self.cronos_params['rank'], 'CGReLU', cvx_head.seed)
+       from preconditioner import Nys_Precond
 
        Mnys = Nys_Precond(U, S, tildX.shape[1], cvx_head.rho, P_S, 'CGReLU')
 

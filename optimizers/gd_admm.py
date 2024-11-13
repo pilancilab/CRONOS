@@ -1,9 +1,8 @@
 import jax 
 import jax.numpy as jnp
 from jax import jit
-from utils.metric_utils import mse, compute_bin_acc
-from utils.model_utils import optimal_weights_transform
-from utils.proximal_utils import proxl2_tensor
+from utils import mse, compute_bin_acc
+# from utils.model_utils import optimal_weights_transform
 from functools import partial
 
 def gd_admm(model, admm_params):
@@ -45,6 +44,8 @@ def gd_admm(model, admm_params):
 @jit 
 def _admm_step (model, u, v, s, lam, nu):
   # u update
+  from utils import proxl2_tensor
+
   grad_loss = model.rmatvec_F(model.matvec_F(u)-model.y)
   u = u-(10**-8)*(grad_loss+model.rho*(u-v+lam+model.rmatvec_G(model.matvec_G(u)-s+nu)))
 

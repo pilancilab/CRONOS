@@ -1,6 +1,6 @@
 
 from models.cvx_mlp import Convex_MLP
-from utils.model_utils import get_grelu_patterns, grelu_optimal_weights_transform
+#from utils import get_grelu_patterns, grelu_optimal_weights_transform
 import jax.numpy as jnp
 from jax import jit, tree_util
 
@@ -14,7 +14,10 @@ class CVX_GReLU_MLP(Convex_MLP):
         self.d_diags = d_diags
         self.gates = gates
     
+    
+
     def init_model(self):
+        from utils import get_grelu_patterns
         self.d_diags, self.gates, self.seed = get_grelu_patterns(self.X, self.P_S, self.seed)
     
     @jit
@@ -46,7 +49,10 @@ class CVX_GReLU_MLP(Convex_MLP):
     def matvec_A(self, vec):
         return self.rmatvec_F(self.matvec_F(vec)/self.X.shape[0])+10**-8*vec
     
+    
+
     def get_nvcx_weights(self, u):
+        from utils import grelu_optimal_weights_transform
         return grelu_optimal_weights_transform(u, self.P_S, self.X.shape[1])
     
     def predict(self, data, W1, w2):

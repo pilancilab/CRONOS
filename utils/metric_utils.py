@@ -32,6 +32,7 @@ def classification_accuracy(y_hat: jnp.ndarray, y: jnp.ndarray) -> float:
     assert len(y_hat.shape) == 2, "y_hat must be a 2D array with shape (n_samples, n_classes)"
     
     # Ensure y is a 1D array with shape (n_samples,)
+    y = y.ravel()
     assert len(y.shape) == 1, "y must be a 1D array with shape (n_samples,)"
     
     # Get the predicted class as the index with the highest score in each row of y_hat

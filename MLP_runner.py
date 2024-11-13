@@ -2,20 +2,31 @@
    (in-depth hyperparameter tuning)
 '''
 
+# import jax
+# import numpy as np
+# import os
+# from experiments.lr_experiment import lr_grid_exp_fun, lr_random_search
+# from plotting.metric_plotting import plot_median_metric
+# from utils.load_data import load_cifar, load_food, load_imagenet, load_imagenet512
+# import pickle
+
+
+# # manually change the following variables DATASET and MODEL
+# DATASET = 'imagenet512' # cifar10, food, imagenet, imagenet512
+# MODEL = 'mlp' # change to 'mlp', 'cnn', gpt experiments have separate runner
+# OUTPUT_DIR = '/home/miria/VISION_TUES/' # can change to relative directory 
+
+
 import jax
+import sys
 import numpy as np
 import os
-from experiments.lr_experiment import lr_grid_exp_fun, lr_random_search
-from plotting.metric_plotting import plot_median_metric
-from utils.load_data import load_cifar, load_food, load_imagenet, load_imagenet512
+from experiments import lr_grid_exp_fun, lr_random_search
+from utils import load_cifar, load_food, load_imagenet, load_imagenet512
+#from plotting.metric_plotting import plot_median_metric
+
 import pickle
-
-
-# manually change the following variables DATASET and MODEL
-DATASET = 'imagenet512' # cifar10, food, imagenet, imagenet512
-MODEL = 'mlp' # change to 'mlp', 'cnn', gpt experiments have separate runner
-OUTPUT_DIR = '/home/miria/VISION_TUES/' # can change to relative directory 
-
+from config import *
 
 # Load data
 
@@ -60,11 +71,12 @@ elif DATASET == 'imagenet512':
   training_X, training_y, test_X, test_y = load_imagenet512()
 
   #Setup optimizers
-  opts = {'Adam': dict(optimizer='Adam', n_epoch=50, batch_size=600), 
-  'AdamW': dict(optimizer='AdamW', gamma=10**-4,  n_epoch=50, batch_size=600), 
-  'SGD': dict(optimizer='SGD', momentum=0.9, n_epoch=50, batch_size=600),
-  'Shampoo': dict(optimizer='Shampoo', n_epoch=50, batch_size=600),  
-  'Yogi': dict(optimizer = 'Yogi', n_epoch=50, batch_size=600)}
+  # opts = {'Adam': dict(optimizer='Adam', n_epoch=50, batch_size=600), 
+  # 'AdamW': dict(optimizer='AdamW', gamma=10**-4,  n_epoch=50, batch_size=600), 
+  # 'SGD': dict(optimizer='SGD', momentum=0.9, n_epoch=50, batch_size=600),
+  # 'Shampoo': dict(optimizer='Shampoo', n_epoch=50, batch_size=600),  
+  # 'Yogi': dict(optimizer = 'Yogi', n_epoch=50, batch_size=600)}
+  opts = {}
 
 
 

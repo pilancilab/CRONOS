@@ -2,9 +2,9 @@ import jax.numpy as jnp
 import optax
 from jax import jit, tree_util
 from optax.contrib import dadapt_adamw
-from models.cvx_relu_mlp import CVX_ReLU_MLP
-from optimizers.cronos import admm
-from utils.model_utils import optimal_weights_transform
+from models import CVX_ReLU_MLP
+from optimizers import admm
+
 from optimizers.dist_shampoo.distributed_shampoo import distributed_shampoo
 
 class CronosAM:
@@ -31,7 +31,7 @@ class CronosAM:
        cvx_head.init_model()
        
        P_S =  self.cronos_params['P_S']
-
+       from utils import optimal_weights_transform
        # Solves convex reformulation for the last two layers via ADMM
        cvx_weights, _ = admm(cvx_head, self.cronos_params['admm_params'])
 

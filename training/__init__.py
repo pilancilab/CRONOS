@@ -1,9 +1,9 @@
 # import specific functions or classes for convenience
 import os 
 
-from .core import main_function, helper_function
-from .other_module import AnotherClass
-from .two_lay_cvx_classifier import Two_Lay_CVX_Classifier
+from .train import train
+# from .other_module import AnotherClass
+# from .two_lay_cvx_classifier import Two_Lay_CVX_Classifier
 
 # Set package-level metadata
 __version__ = '0.1.0'

@@ -1,19 +1,23 @@
 # more general, more datasets and optimizers, higher flexibility.
 
 import jax
+import sys
 import numpy as np
 import os
-from experiments.lr_experiment import lr_grid_exp_fun, lr_random_search
-from utils.load_data import load_cifar, load_food, load_imagenet, load_imagenet512
+from experiments import lr_grid_exp_fun, lr_random_search
+from utils import load_cifar, load_food, load_imagenet, load_imagenet512
 import pickle
+from config import *
 
 
 # manually change the following variables DATASET and MODEL
-DATASET = 'imagenet512' # change to 'food', 'imagenet', 'imagenet512'
-MODEL = 'mlp' # change to 'mlp', 'cnn', 'gpt2'
-OUTPUT_DIR = '/home/miria/Desktop/VISION_alldata/' # can change to relative directory 
+# DATASET = 'imagenet512' # change to 'food', 'imagenet', 'imagenet512'
+# MODEL = 'mlp' # change to 'mlp', 'cnn', 'gpt2'
+print("you are in MLP_runner__ OUTPUT_DIR is set to:", OUTPUT_DIR)
+print("you are in MLP_runner__ PACKAGE_DIR is set to:", PACKAGE_DIR)
 
-BATCH_SIZE = 100
+# exit()
+# BATCH_SIZE = 100
 
 # Load data
 

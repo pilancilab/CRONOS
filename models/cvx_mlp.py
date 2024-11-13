@@ -10,46 +10,47 @@ class Convex_MLP(ABC):
         self.seed = seed 
         self.d_diags = None
         self.e_diags = None
-        self.Xval = None
-        self.yval = None
+        self.Xtst = None
+        self.ytst = None
     
     @abstractmethod
-    def init_model(self,seed):
-        pass
-
-    @abstractmethod
-    def matvec_Fi(self,i,vec):
+    def init_model(self, seed):
         pass
     
     @abstractmethod
-    def rmatvec_Fi(self,i,vec):
-        pass
-
-    @abstractmethod
-    def matvec_F(self,vec):
-        pass
-
-    @abstractmethod
-    def rmatvec_F(self,vec):
-        pass
-
-    @abstractmethod
-    def matvec_Gi(self,i,vec):
-        pass
+    def matvec_Fi(self, vec):
+      pass
     
     @abstractmethod
-    def rmatvec_Gi(self,i,vec):
-        pass
+    def rmatvec_Fi(self, vec):
+      pass
     
     @abstractmethod
-    def matvec_G(self,vec):
+    def matvec_Gi(self, vec):
+      pass
+    
+    @abstractmethod
+    def rmatvec_Gi(self, vecs):
+      pass
+
+    @abstractmethod
+    def matvec_F(self, vec):
         pass
 
     @abstractmethod
-    def rmatvec_G(self,vec):
+    def rmatvec_F(self, vec):
         pass
 
     @abstractmethod
-    def matvec_A(self,vec):
+    def matvec_G(self, vec):
         pass
+
+    @abstractmethod
+    def rmatvec_G(self, vec):
+        pass
+
+    @abstractmethod
+    def matvec_A(self, vec):
+        pass
+
 

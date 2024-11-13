@@ -1,8 +1,8 @@
 # this file is the entrance to the CRONOS package eventually 
 
-from models.cvx_relu_mlp import CVX_ReLU_MLP
-from models.cvx_grelu_mlp import CVX_GReLU_MLP
-from optimizers.cronos import run
+from models import CVX_ReLU_MLP
+from models import CVX_GReLU_MLP
+from optimizers import run
 import jax.numpy as jnp
 import jax.random as jrn
 

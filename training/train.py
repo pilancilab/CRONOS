@@ -3,18 +3,18 @@ from jax._src.ad_checkpoint import checkpoint
 import jax.numpy as jnp
 import jax.random as jrn
 from jax import grad, jit
-from models.get_model import init_model
-from models.cvx_relu_mlp import CVX_ReLU_MLP
-from utils.model_utils import optimal_weights_transform
-from utils.opt_utils import get_optimizer
-from optimizers.cronos import admm
+from models import init_model
+from models import CVX_ReLU_MLP
+#from utils import optimal_weights_transform
+from utils import get_optimizer
+from optimizers import admm
 from time import perf_counter
-from utils.metric_utils import get_model_performance
-from utils.train_utils import get_batch
+from utils import get_model_performance
+from utils import get_batch
 
 def train(Xtr, ytr, Xtst, ytst, model_params, opt_params, task):
 
-  ######## SETUP ########
+######## SETUP #########
 
   if task not in ['regression', 'classification']:
      raise ValueError('This task is not supported!')
@@ -99,6 +99,7 @@ def train(Xtr, ytr, Xtst, ytst, model_params, opt_params, task):
       start = perf_counter()
 
       if iter_counter % checkpoint == 0:
+        start = perf_counter()
         params = opt.get_last_two_layers(model, params, Xtr, ytr) 
         i+=1
         data_passes.append(i)
