@@ -67,6 +67,27 @@
   .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
   .badges img { height: 22px; display: block; }
 
+  /* authors */
+  .authors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 48px;
+    padding: 22px 0 40px;
+    text-align: center;
+  }
+  .author { display: flex; flex-direction: column; gap: 2px; }
+  .author a {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .author em {
+    font-style: normal;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
   /* ---------- content ---------- */
   main { padding: 8px 0 64px; }
   section { padding: 30px 0; border-bottom: 1px solid var(--line); }
@@ -180,6 +201,21 @@
       <div class="logo">
         <img src="assets/CRONOS_logo_clean.png" alt="CRONOS">
       </div>
+    </div>
+
+    <div class="authors">
+      <span class="author">
+        <a href="mailto:miria00@stanford.edu">Miria Feng</a>
+        <em>Electrical Engineering, Stanford University</em>
+      </span>
+      <span class="author">
+        <a href="mailto:zfran@stanford.edu">Zachary Frangella</a>
+        <em>Management Science &amp; Engineering, Stanford University</em>
+      </span>
+      <span class="author">
+        <a href="mailto:pilanci@stanford.edu">Mert Pilanci</a>
+        <em>Electrical Engineering, Stanford University</em>
+      </span>
     </div>
   </div>
 </header>
