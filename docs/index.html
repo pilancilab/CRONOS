@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRONOS &mdash; Convex Neural Networks via Operator Splitting</title>
+<meta name="description" content="CRONOS: a scalable JAX framework for global optimization of two-layer neural networks via convex reformulation and operator splitting (ADMM). NeurIPS 2024.">
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="CRONOS: Convex Neural Networks via Operator Splitting">
+<meta property="og:description" content="A scalable JAX framework for global optimization of two-layer neural networks via convex reformulation and operator splitting (ADMM). NeurIPS 2024.">
+<meta property="og:image" content="assets/CRONOS_logo_clean.png">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --navy: #1b2a4a;
+    --gold: #c79a3b;
+    --ink: #1c2230;
+    --muted: #5b6472;
+    --line: #e6e8ec;
+    --bg: #ffffff;
+    --code-bg: #0f172a;
+    --code-fg: #e6edf3;
+    --chip-bg: #f3f5f8;
+    --max: 920px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- header ---------- */
+  header {
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(1200px 320px at 85% -40%, rgba(199,154,59,0.10), transparent 60%),
+      radial-gradient(900px 300px at 10% -30%, rgba(27,42,74,0.08), transparent 60%);
+  }
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 0 40px;
+  }
+  .hero .text { flex: 1 1 70%; min-width: 0; }
+  .hero .logo { flex: 0 0 30%; text-align: right; }
+  .hero .logo img { width: 240px; max-width: 100%; height: auto; }
+  h1 {
+    font-size: 52px;
+    line-height: 1;
+    margin: 0 0 10px;
+    letter-spacing: 1px;
+    color: var(--navy);
+    font-weight: 800;
+  }
+  .subtitle { font-size: 19px; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
+  .blurb { font-size: 15px; color: var(--muted); margin: 0 0 18px; max-width: 56ch; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+  .badges img { height: 22px; display: block; }
+
+  /* ---------- content ---------- */
+  main { padding: 8px 0 64px; }
+  section { padding: 30px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  h2 {
+    font-size: 24px;
+    color: var(--navy);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: "";
+    width: 8px; height: 22px;
+    background: var(--gold);
+    border-radius: 2px;
+    display: inline-block;
+  }
+  h3 { font-size: 17px; color: var(--ink); margin: 22px 0 8px; }
+  p { margin: 0 0 14px; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin: 6px 0; }
+  strong { color: var(--ink); }
+
+  /* feature grid */
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+    background: #fcfcfd;
+  }
+  .card h4 { margin: 0 0 6px; color: var(--navy); font-size: 16px; }
+  .card p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  /* code blocks */
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 18px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    position: relative;
+    margin: 0 0 14px;
+  }
+  code { font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  p code, li code {
+    background: var(--chip-bg);
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #b4541e;
+  }
+  .codeblock { position: relative; }
+  .copy-btn {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: rgba(255,255,255,0.10);
+    color: #cbd5e1;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+  .copy-btn.copied { background: var(--gold); color: #1c2230; border-color: var(--gold); }
+
+  /* footer */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  footer a { color: var(--navy); font-weight: 600; }
+
+  hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* responsive */
+  @media (max-width: 720px) {
+    .hero { flex-direction: column-reverse; text-align: center; gap: 18px; padding: 32px 0 28px; }
+    .hero .logo { text-align: center; }
+    .badges { justify-content: center; }
+    .blurb { margin-left: auto; margin-right: auto; }
+    h1 { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hero">
+      <div class="text">
+        <h1>CRONOS</h1>
+        <div class="subtitle">Convex Neural Networks via Operator Splitting</div>
+        <p class="blurb">A scalable JAX framework for global optimization of two-layer neural networks via convex reformulation and operator splitting (ADMM).</p>
+        <p class="badges">
+          <a href="https://arxiv.org/abs/2411.01088"><img alt="paper" src="https://img.shields.io/badge/paper-NeurIPS%202024-blue.svg"></a>
+          <img alt="python" src="https://img.shields.io/badge/python-3.10%2B-blue.svg">
+          <img alt="jax" src="https://img.shields.io/badge/jax-0.4%2B-orange.svg">
+          <a href="https://github.com/pilancilab/CRONOS/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-green.svg"></a>
+        </p>
+      </div>
+      <div class="logo">
+        <img src="assets/CRONOS_logo_clean.png" alt="CRONOS">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section id="overview">
+      <p>Welcome to the official implementation for the <strong>CRONOS project</strong>! We introduce the <strong>CRONOS</strong> algorithm for convex optimization of two-layer neural networks. This repository contains the official JAX implementation of the CRONOS paper, and allows installation as a handy pip package for all your binary classification needs.</p>
+      <p>The paper is available on <a href="https://arxiv.org/abs/2411.01088">arXiv (2411.01088)</a> and the source code is hosted at <a href="https://github.com/pilancilab/CRONOS">github.com/pilancilab/CRONOS</a>.</p>
+    </section>
+
+    <section id="methods">
+      <h2>CRONOS &amp; CRONOS-AM</h2>
+      <ul>
+        <li><strong>CRONOS</strong>: Uses convex optimization to train two-layer neural networks efficiently at scale. Experiments include full-size ImageNet, downsampled ImageNet, IMDb, Food, FMNIST, CIFAR-10, MNIST, and synthetic datasets.</li>
+        <li><strong>CRONOS-AM</strong>: CRONOS with Alternating Minimization. This extension allows training of multi-layer networks with arbitrary architectures (MLP, CNN, GPT, etc.).</li>
+      </ul>
+    </section>
+
+    <section id="features">
+      <h2>Key Features</h2>
+      <div class="features">
+        <div class="card">
+          <h4>Scalability</h4>
+          <p>CRONOS handles high-dimensional, large-scale datasets up to full ImageNet.</p>
+        </div>
+        <div class="card">
+          <h4>Convergence</h4>
+          <p>Theoretical analysis shows CRONOS converges to the global minimum of the convex reformulation under mild assumptions.</p>
+        </div>
+        <div class="card">
+          <h4>Performance</h4>
+          <p>Large-scale numerical experiments with GPU acceleration in JAX &mdash; VRAM-friendly without sacrificing speed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="installation">
+      <h2>Installation</h2>
+      <p>Clone the repository and install from source:</p>
+      <div class="codeblock">
+        <button class="copy-btn" data-copy="git clone https://github.com/pilancilab/CRONOS.git
+cd CRONOS
+pip install -e .">Copy</button>
+        <pre><code>git clone https://github.com/pilancilab/CRONOS.git
+cd CRONOS
+pip install -e .</code></pre>
+      </div>
+    </section>
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <p>If you use this code in your work, please cite the paper:</p>
+      <div class="codeblock">
+        <button class="copy-btn" data-copy="@inproceedings{feng2024cronos,
+  title     = {CRONOS: Convex Neural Networks via Operator Splitting},
+  author    = {Feng, Miria and Frangella, Zachary and Pilanci, Mert},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2411.01088}
+}">Copy</button>
+        <pre><code>@inproceedings{feng2024cronos,
+  title     = {CRONOS: Convex Neural Networks via Operator Splitting},
+  author    = {Feng, Miria and Frangella, Zachary and Pilanci, Mert},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2411.01088}
+}</code></pre>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <hr class="rule" style="margin-bottom:20px">
+    CRONOS &middot; NeurIPS 2024 &middot;
+    <a href="https://arxiv.org/abs/2411.01088">Paper</a> &middot;
+    <a href="https://github.com/pilancilab/CRONOS">Code</a>
+    <br>
+    Miria Feng, Zachary Frangella, Mert Pilanci &mdash; <a href="https://pilanci.stanford.edu/">Pilanci Lab</a>, Stanford University.
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(text).then(function () {
+        var original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

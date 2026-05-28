@@ -1,4 +1,27 @@
-# CRONOS: Convex Neural Networks via Operator Splitting
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="70%" valign="middle">
+
+<h1>CRONOS</h1>
+
+<b>Convex Neural Networks via Operator Splitting</b><br>
+A scalable JAX framework for global optimization of two-layer neural networks via convex reformulation and operator splitting (ADMM).
+
+<p>
+  <a href="https://arxiv.org/abs/2411.01088"><img alt="paper" src="https://img.shields.io/badge/paper-NeurIPS%202024-blue.svg"></a>
+  <img alt="python" src="https://img.shields.io/badge/python-3.10%2B-blue.svg">
+  <img alt="jax" src="https://img.shields.io/badge/jax-0.4%2B-orange.svg">
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-green.svg">
+</p>
+
+</td>
+<td width="30%" valign="middle" align="right">
+<img src="assets/CRONOS_logo_clean.png" alt="CRONOS" width="240">
+</td>
+</tr>
+</table>
+
+---
 
 Welcome to the official implementation for the **CRONOS project**! Check out the [paper](https://arxiv.org/abs/2411.01088) for more details.
 
@@ -23,19 +46,26 @@ We introduce the **CRONOS** algorithm for convex optimization of two-layer neura
 
 ## Installation
 
+Clone the repository and install from source:
+
 ```bash
-pip install CRONOS -- user sets dataset, exp, model, optimizer
+git clone https://github.com/pilancilab/CRONOS.git
+cd CRONOS
+pip install -e .
 ```
 ---
 
 ## Citation
 
-```bash
+If you use this code in your work, please cite the paper:
+
+```bibtex
 @inproceedings{feng2024cronos,
-    title={{CRONOS: Convex Neural Networks via Operator Splitting}},
-    author={Miria Feng, Zachary Frangella and Mert Pilanci},
-    booktitle={Proceedings of the Neural Information Processing Systems (NeurIPS)},
-    year={2024}
+  title     = {CRONOS: Convex Neural Networks via Operator Splitting},
+  author    = {Feng, Miria and Frangella, Zachary and Pilanci, Mert},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2411.01088}
 }
 ```
 ---
