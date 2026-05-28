@@ -16,7 +16,7 @@ A scalable JAX framework for global optimization of two-layer neural networks vi
 
 </td>
 <td width="30%" valign="middle" align="right">
-<img src="assets/CRONOS_logo_clean.png" alt="CRONOS" width="240">
+<img src="assets/CRONOS_logo.png" alt="CRONOS" width="240">
 </td>
 </tr>
 </table>
