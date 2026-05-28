@@ -67,26 +67,33 @@
   .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
   .badges img { height: 22px; display: block; }
 
-  /* authors */
+  /* authors — NeurIPS paper style */
   .authors {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 14px 48px;
-    padding: 22px 0 40px;
+    gap: 18px 64px;
+    padding: 26px 0 42px;
     text-align: center;
   }
-  .author { display: flex; flex-direction: column; gap: 2px; }
-  .author a {
-    font-size: 16px;
+  .author { display: flex; flex-direction: column; line-height: 1.45; }
+  .author .name {
     font-weight: 700;
-    color: var(--navy);
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
   }
-  .author em {
-    font-style: normal;
+  .author .dept {
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .author .email {
+    font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 13px;
     color: var(--muted);
+    margin-top: 2px;
   }
+  .author .email:hover { color: var(--navy); }
 
   /* ---------- content ---------- */
   main { padding: 8px 0 64px; }
@@ -204,18 +211,24 @@
     </div>
 
     <div class="authors">
-      <span class="author">
-        <a href="mailto:miria00@stanford.edu">Miria Feng</a>
-        <em>Electrical Engineering, Stanford University</em>
-      </span>
-      <span class="author">
-        <a href="mailto:zfran@stanford.edu">Zachary Frangella</a>
-        <em>Management Science &amp; Engineering, Stanford University</em>
-      </span>
-      <span class="author">
-        <a href="mailto:pilanci@stanford.edu">Mert Pilanci</a>
-        <em>Electrical Engineering, Stanford University</em>
-      </span>
+      <div class="author">
+        <span class="name">Miria Feng</span>
+        <span class="dept">Electrical Engineering</span>
+        <span class="dept">Stanford University</span>
+        <a class="email" href="mailto:miria00@stanford.edu">miria00@stanford.edu</a>
+      </div>
+      <div class="author">
+        <span class="name">Zachary Frangella</span>
+        <span class="dept">Management Science &amp; Engineering</span>
+        <span class="dept">Stanford University</span>
+        <a class="email" href="mailto:zfran@stanford.edu">zfran@stanford.edu</a>
+      </div>
+      <div class="author">
+        <span class="name">Mert Pilanci</span>
+        <span class="dept">Electrical Engineering</span>
+        <span class="dept">Stanford University</span>
+        <a class="email" href="mailto:pilanci@stanford.edu">pilanci@stanford.edu</a>
+      </div>
     </div>
   </div>
 </header>
